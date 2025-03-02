@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
-  - Heath pick up
+  - Health Item
+  - Speed potion
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerHealthScript : MonoBehaviour
 {
@@ -23,6 +24,19 @@ public class PlayerHealthScript : MonoBehaviour
         {
             playerSprt.enabled = false;
             playerMv.enabled = false;
+        }
+    }
+
+    public void Heal(int healAmount)
+    {
+        if (currentHealth < maxHealth)
+        {
+            currentHealth += healAmount;
+            Debug.Log("Здоровье увеличено: " + currentHealth);
+            if (currentHealth >= maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
         }
     }
 }

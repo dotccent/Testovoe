@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontalMove;
-    public float speed = 10f;
-    public float jumpPower = 10.0f;
     private bool facingRight = true;
     private bool jumping = false;
 
@@ -14,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private LayerMask _groundLayer;
 
+    public float speed = 10f;
+    public float jumpPower = 10.0f;
+    public float speedMultiplier = 1.0f;
     public Animator _animator;
 
     private void Start()
@@ -45,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.linearVelocity = new Vector2(horizontalMove * speed, _rb.linearVelocity.y);
+        _rb.linearVelocity = new Vector2(horizontalMove * speed * speedMultiplier, _rb.linearVelocity.y);
     }
 
     private bool isGrounded()
@@ -62,5 +63,17 @@ public class PlayerMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+
+    public void SpeedBoost(float multiplier)
+    {
+        StartCoroutine(SpeedBoostCoroutine(multiplier));
+    }
+
+    private IEnumerator SpeedBoostCoroutine(float multiplier)
+    {
+        speedMultiplier = multiplier;
+        yield return new WaitForSeconds(2);
+        speedMultiplier = 1.0f;
     }
 }

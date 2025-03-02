@@ -23,6 +23,7 @@ public class TakeDamageScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerHealth.TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }
