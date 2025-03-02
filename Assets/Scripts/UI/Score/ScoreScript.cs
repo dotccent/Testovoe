@@ -8,10 +8,8 @@ public class ScoreScript : MonoBehaviour
     public static ScoreScript instance;
 
     public Text scoreText;
-    public Text highScoreText;
 
     int score = 0;
-    int highScore = 0;
 
     private void Awake()
     {
@@ -22,11 +20,11 @@ public class ScoreScript : MonoBehaviour
     void Start()
     {
         scoreText.text = "Score: " + score.ToString();
-        highScoreText.text = "High score: " + highScore.ToString();
     }
-    public void AddScore()
+    // добавляем очки в общий счет в зависимости от предмета
+    public void AddScore(int scoreAmount)
     {
-        score++;
-        scoreText.text = "Score: " + score.ToString();
+        score += scoreAmount;
+        scoreText.text = "Score: " + score.ToString();  // выводим счет очков на экран
     }
 }

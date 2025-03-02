@@ -10,6 +10,8 @@ public class PlayerHealthScript : MonoBehaviour
 
     public SpriteRenderer playerSprt;
     public PlayerMovement playerMv;
+
+    public GameOverScript gameOver;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +26,7 @@ public class PlayerHealthScript : MonoBehaviour
         {
             playerSprt.enabled = false;
             playerMv.enabled = false;
+            gameOver.GameOverSetup();
         }
     }
 

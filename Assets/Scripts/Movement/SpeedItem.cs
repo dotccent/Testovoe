@@ -23,7 +23,6 @@ public class SpeedBoostScript : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             movement.SpeedBoost(boostMultiplier);
-            Destroy(gameObject);
         }
     }
 }
